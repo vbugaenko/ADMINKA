@@ -1,0 +1,1 @@
+<fmt:formatDate value="${user.getRegdate()}" pattern="dd-MM-yy HH:MM"/>

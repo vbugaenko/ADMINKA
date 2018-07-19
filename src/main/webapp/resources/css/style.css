@@ -1,0 +1,543 @@
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: tahoma, sens-serif;
+    font-size: 14px;
+    background: transparent;
+    color: #777;
+    width: 100%;
+    height: 100%;
+}
+
+.wrap {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    display: table;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: table-row;
+}
+
+.wrapper {
+    width: 940px;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+}
+
+h1 {
+    font-size: 30px;
+    text-align: left;
+    margin-bottom: 20px;
+    background: url(../imgs/hbg.png) 0 center no-repeat;
+    padding-left: 37px;
+}
+
+h2 {
+    font-size: 27px;
+    text-align: left;
+    margin-bottom: 20px;
+    background: url(../imgs/hbg.png) 0 center no-repeat;
+    padding-left: 37px;
+}
+
+h3 {
+    font-size: 24px;
+    text-align: left;
+    margin-bottom: 20px;
+    background: url(../imgs/hbg.png) 0 center no-repeat;
+    padding-left: 37px;
+}
+
+h4 {
+    font-size: 21px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+h5 {
+    font-size: 16px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+ul, ol {
+    margin-left: 20px;
+}
+
+a {
+    color: #2bad4d;
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~ bg ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.bg {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: url(../imgs/bg.jpg) center center no-repeat, rgba(0, 0, 0, 0.3);
+    background-size: cover;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~ HEADER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+header {
+    height: 130px;
+    background: rgba(43, 173, 77, 0.5);
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+header .logo {
+    width: 172px;
+    height: 119px;
+    background: url(../imgs/logo.png) no-repeat center center;
+    float: left;
+    margin-top: 3px;
+    display: block;
+}
+
+header .sys_name {
+    display: block;
+    margin-top: 10px;
+    margin-left: 30px;
+    float: left;
+    text-align: left;
+    width: 40%;
+    heigth: auto;
+    color: #fff;
+    font-size: 40px;
+    text-transform: uppercase;
+
+}
+
+header .user {
+    width: 90px;
+    height: auto;
+    float: right;
+    padding-top: 20px;
+    padding-left: 50px;
+    text-align: right;
+    color: #fff;
+    background: url(../imgs/ico5.png) no-repeat 0 center;
+    text-align: right;
+}
+
+header .user span {
+    display: block;
+
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~ SECTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+section .small_block {
+    background: rgba(255, 255, 255, 0.85);
+    display: block;
+    margin: 100px auto;
+    width: 50%;
+    padding: 20px;
+    position: relative;
+    z-index: 15;
+    margin: 0 auto;
+}
+
+section .main_info {
+    text-align: Center;
+
+}
+
+section .main_info h1 {
+    font-size: 50px;
+    text-transform: uppercase;
+    text-align: Center;
+    color: #2bad4d;
+}
+
+section .main_info h4 {
+    text-align: Center;
+}
+
+section .content {
+    width: 80%;
+    height: auto;
+    min-height: 400px;
+    padding: 20px;
+    margin-left: 2%;
+    float: right;
+    display: block;
+    background: rgba(255, 255, 255, 0.85);
+    position: relative;
+    z-index: 15;
+}
+
+section .msg {
+    margin: 10px auto;
+    display: block;
+    text-align: Center;
+    padding: 10px;
+    min-width: 50%;
+    height: auto;
+}
+
+section .msg.error {
+    background: rgba(200, 56, 107, 0.5);
+}
+
+section .msg.success {
+    background: rgba(43, 173, 77, 0.5);
+}
+
+section .content img.personal_photo {
+    float: left;
+    width: 30%;
+    display: block;
+    margin-right: 2%;
+}
+
+section .content .personal_info {
+    display: block;
+    width: 68%;
+    float: left;
+}
+
+section .content table {
+    width: 80%;
+    border: 0;
+    border-collapse: collapse;
+}
+
+section .content table td {
+    padding: 5px;
+}
+
+section .content table thead tr {
+    background: rgba(43, 173, 77, 0.7);
+    border-bottom: 1px solid #fff;
+}
+
+section .content table thead tr th {
+    color: #fff;
+    text-align: left;
+    padding: 5px;
+    text-transform: uppercase;
+}
+
+section .content table tbody tr:nth-child(odd) {
+    background: rgba(43, 173, 77, 0.4);
+}
+
+section .content table tbody tr:hover {
+    opacity: 0.74;
+}
+
+section .sidebar {
+    width: 40px;
+    padding: 20px;
+    position: fixed;
+    z-index: 20;
+    left: 0;
+    top: 155px;
+    display: block;
+    background: rgba(255, 255, 255, 0.85);
+    border-right: 2px solid #2bad4d;
+    border-bottom: 2px solid #2bad4d;
+    overflow: hidden;
+}
+
+section .sidebar .open_close {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #2bad4d;
+    color: #fff;
+    width: 20px;
+    height: 28px;
+    padding: 0;
+
+}
+
+section .sidebar .open_close:after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    border: 10px solid transparent;
+    border-left: 10px solid #fff;
+}
+
+section .sidebar .open_close.close:after {
+    content: '';
+    position: absolute;
+    left: -5px;
+    bottom: 5px;
+    border: 10px solid transparent;
+    border-right: 10px solid #fff;
+}
+
+section .sidebar a {
+    display: block;
+    margin-bottom: 10px;
+    padding-left: 50px;
+    min-height: 37px;
+    padding-top: 4px;
+    color: transparent;
+}
+
+section .sidebar a:hover {
+    opacity: 0.8
+}
+
+section .sidebar a.dashboard {
+    background: url(../imgs/ico6.png) no-repeat 0 center;
+}
+
+section .sidebar a.personal {
+    background: url(../imgs/ico5.png) no-repeat 0 center;
+}
+
+section .sidebar a.marks {
+    background: url(../imgs/ico3.png) no-repeat 0 center;
+}
+
+section .sidebar a.groups {
+    background: url(../imgs/ico1.png) no-repeat 0 center;
+}
+
+section .sidebar a.subjects {
+    background: url(../imgs/ico7.png) no-repeat 0 center;
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~ FOOTER ~~~~~~~~~~~~~~~~~~~~~~~~ */
+footer {
+    background: rgba(0, 0, 0, 0.74);
+    height: 60px;
+    padding-top: 10px;
+    color: #e5e5e5;
+    display: block;
+}
+
+footer .info {
+    text-align: Center;
+
+}
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~ FORMS ~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+form {
+    height: auto;
+}
+
+form label {
+    display: Block;
+    width: 85%;
+    margin: 10px auto 0;
+}
+
+.btn,
+input[type="submit"] {
+    display: block;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    width: 50%;
+    height: auto;
+    background: #2bad4d;
+    text-decoration: none;
+    text-align: Center;
+    text-transform: uppercase;
+    padding: 7px;
+    border: 1px solid #fff;
+    margin: 10px auto 0;
+}
+
+input[type="submit"] {
+    display: block;
+    cursor: pointer;
+}
+
+.btn:hover,
+input[type="submit"]:hover {
+    opacity: 0.74;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    display: block;
+    width: 85%;
+    padding: 7px;
+    margin: 0px auto 10px;
+    background: transparent;
+    border: none;
+    border-radius: 2px;
+    border-bottom: 1px solid #2bad4d;
+    border-left: 1px solid #2bad4d;
+}
+
+.styledsel {
+    padding: 7px;
+    overflow: hidden;
+    border-bottom: 1px solid #2bad4d;
+    border-left: 1px solid #2bad4d;
+    width: 85%;
+    margin: 0px auto 10px;
+}
+
+.styledsel select {
+    text-transform: none;
+    background: transparent;
+    line-height: 1;
+    border: 0;
+    width: 100%;
+    border-radius: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 31px;
+    margin-top: 0;
+}
+
+
+textarea {
+    height: 120px;
+}
+
+::-webkit-input-placeholder {
+    color: #222326;
+}
+
+::-moz-placeholder {
+    color: #222326;
+}
+
+.reveal-modal-bg {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    background: rgba(0, 0, 0, .8);
+    z-index: 100;
+    display: none;
+    top: 0;
+    left: 0;
+}
+
+.reveal-modal {
+    visibility: hidden;
+    top: 100px;
+    left: 50%;
+    margin-left: -150px;
+    width: 300px;
+    background: #2F75BA;
+    position: absolute;
+    z-index: 101;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .4);
+    height: auto;
+    border: 2px solid #fff;
+}
+
+.reveal-modal p {
+    text-align: center;
+    color: #fff;
+    font-size: 21px;
+}
+
+.reveal-modal p.small {
+    font-family: 'fregatregular';
+    font-size: 11px;
+    color: #fff;
+}
+
+.reveal-modal.small {
+    width: 200px;
+    margin-left: -140px;
+}
+
+.reveal-modal.medium {
+    width: 400px;
+    margin-left: -240px;
+}
+
+.reveal-modal.large {
+    width: 600px;
+    margin-left: -340px;
+}
+
+.reveal-modal.xlarge {
+    width: 800px;
+    margin-left: -440px;
+}
+
+.reveal-modal .close-reveal-modal {
+    font-size: 22px;
+    line-height: .5;
+    position: absolute;
+    top: 8px;
+    right: 11px;
+    color: #aaa;
+    text-shadow: 0 -1px 1px #000;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#welcome_label {
+    text-align: center;
+}
+/* ~~~~~~~~~~~~~~~~~~~~~~~~ USERS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.usersBlocks {
+    color:              black;
+    margin:             20px 0 0 0;
+    border:             1px solid black;
+    width:              1070px;
+    padding:            20px;
+    background-color:   white;
+    text-align:         center;
+    font-size:          12px;
+    font-family:        'Courier';
+}
+
+.userCard {
+    margin:             20px;
+    border:             1px solid black;
+    width:              940px;
+    padding:            20px;
+    background-color:   white;
+}
+
+.tableHeader {
+    background-color: grey;
+    color: white;
+    text-align: center;
+}
+
+.whiteBG {
+    background-color: white;
+}
