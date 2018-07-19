@@ -44,8 +44,8 @@ public class RegistrationServiceImpl implements RegistrationService {
         this.rolesDAO = rolesDAO;
     }
 
-    //@Autowired
-    //private BCryptPasswordEncoder bcryptEncoder;
+    //TODO вклюсить Autowired т.к. и при логине тоже использвется
+    private BCryptPasswordEncoder bcryptEncoder = new BCryptPasswordEncoder();
 
     private LocalDate convertToLocalDate(Date dateToConvert)
     {
@@ -121,10 +121,9 @@ public class RegistrationServiceImpl implements RegistrationService {
         return paramsChecking;
     }
 
-    //TODO: вернуть шифрование
     @Override
     public String pwdHashWithSalt(String password)
     {
-        return password; //bcryptEncoder.encode(password);
+        return bcryptEncoder.encode(password);
     }
 }
