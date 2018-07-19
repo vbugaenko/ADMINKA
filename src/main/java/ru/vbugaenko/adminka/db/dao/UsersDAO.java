@@ -1,6 +1,7 @@
-package ru.innopolis.stc9.saturn.db.dao;
+package ru.vbugaenko.adminka.db.dao;
 
-import ru.innopolis.stc9.saturn.db.entities.User;
+
+import ru.vbugaenko.adminka.db.entities.User;
 
 /**
  * refactored

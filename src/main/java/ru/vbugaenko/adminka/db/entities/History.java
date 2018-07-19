@@ -1,4 +1,4 @@
-package ru.innopolis.stc9.saturn.db.entities;
+package ru.vbugaenko.adminka.db.entities;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;

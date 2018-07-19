@@ -1,4 +1,4 @@
-package ru.innopolis.stc9.saturn.db.dao;
+package ru.vbugaenko.adminka.db.dao;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
@@ -6,10 +6,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.NativeQuery;
-import ru.innopolis.stc9.saturn.db.entities.History;
-import ru.innopolis.stc9.saturn.db.entities.User;
+import ru.vbugaenko.adminka.db.entities.History;
+import ru.vbugaenko.adminka.db.entities.User;
 
-import java.sql.Date;
+
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class UserHistoryJpaDaoImpl implements UserHistoryJpaDao
     @Override
     public void add(int userId, Date date, String description)
     {
-        try (Session session = sessionFactory.openSession() )
+        try ( Session session = cfg.buildSessionFactory().openSession() )
         {
             Transaction trans = session.beginTransaction();
             User user = session.get(User.class, userId);

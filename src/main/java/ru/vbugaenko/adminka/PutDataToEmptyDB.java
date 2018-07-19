@@ -1,12 +1,13 @@
-package ru.innopolis.stc9;
+package ru.vbugaenko.adminka;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
-import ru.innopolis.stc9.saturn.db.entities.History;
-import ru.innopolis.stc9.saturn.db.entities.Password;
-import ru.innopolis.stc9.saturn.db.entities.Role;
-import ru.innopolis.stc9.saturn.db.entities.User;
+import ru.vbugaenko.adminka.db.entities.History;
+import ru.vbugaenko.adminka.db.entities.Password;
+import ru.vbugaenko.adminka.db.entities.Role;
+import ru.vbugaenko.adminka.db.entities.User;
+
 
 import java.util.ArrayList;
 import java.util.List;

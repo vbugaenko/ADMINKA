@@ -1,12 +1,15 @@
-package ru.innopolis.stc9.saturn.service;
+package ru.vbugaenko.adminka.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.innopolis.stc9.saturn.db.dao.*;
-import ru.innopolis.stc9.saturn.db.entities.User;
-import ru.innopolis.stc9.saturn.db.security.FormsCheckImpl;
+import ru.vbugaenko.adminka.db.dao.RegistrationDAO;
+import ru.vbugaenko.adminka.db.dao.RolesDAO;
+import ru.vbugaenko.adminka.db.dao.UsersDAO;
+import ru.vbugaenko.adminka.db.entities.User;
+import ru.vbugaenko.adminka.db.security.FormsCheckImpl;
+
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -27,9 +30,6 @@ public class RegistrationServiceImpl implements RegistrationService {
     private final FormsCheckImpl formsCheck;
     private final RegistrationDAO regDAO;
     private final UsersDAO usersDAO;
-    //TODO: Включить позже
-    //private final StudentsDAO studentsDAO;
-    //private final TeachersDAO teachersDAO;
     private final RolesDAO rolesDAO;
 
 
@@ -37,20 +37,15 @@ public class RegistrationServiceImpl implements RegistrationService {
     public RegistrationServiceImpl(FormsCheckImpl formsCheck,
                                    RegistrationDAO regDAO,
                                    UsersDAO usersDAO,
-                                   //StudentsDAO studentsDAO,
-                                   //TeachersDAO teachersDAO,
                                    RolesDAO rolesDAO) {
         this.formsCheck = formsCheck;
         this.regDAO = regDAO;
         this.usersDAO = usersDAO;
-        //this.studentsDAO = studentsDAO;
-        //this.teachersDAO = teachersDAO;
         this.rolesDAO = rolesDAO;
     }
 
-
-    @Autowired
-    private BCryptPasswordEncoder bcryptEncoder;
+    //@Autowired
+    //private BCryptPasswordEncoder bcryptEncoder;
 
     private LocalDate convertToLocalDate(Date dateToConvert)
     {
@@ -61,7 +56,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     public String addUser(
-            Integer userRole, String userLogin, String userName, Date userAge, String userCity,
+            Integer userRole, String userLogin, String userName, Date userBirthdate, String userCity,
             String userAdress, String userPhone, String userEmail, String userPassword,
             String userPasswordRepeat, String userPhoto)
     {
@@ -71,7 +66,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         if (userRole <= 0 && userRole > 4)
             paramsChecking += "error: Тип пользователя выбран неверно!</br>";
 
-        int age = Period.between(convertToLocalDate(userAge), convertToLocalDate(new Date())).getYears();
+        int age = Period.between(convertToLocalDate(userBirthdate), convertToLocalDate(new Date())).getYears();
 
         if (age<18)
             paramsChecking += "error: Сервис доступен только для совершеннолетних!</br>";
@@ -94,7 +89,6 @@ public class RegistrationServiceImpl implements RegistrationService {
         if (!formsCheck.checkPhone(userPhone))
             paramsChecking += "error: Телефон введен неверно!</br>";
 
-
         if (!formsCheck.checkEmail(userEmail))
             paramsChecking += "error: Email введен неверно!</br>";
 
@@ -111,24 +105,26 @@ public class RegistrationServiceImpl implements RegistrationService {
         if (paramsChecking.equals("")) {
             User user = new User();
             user.setRole             ( rolesDAO.get(userRole) ); //Todo: потом разобраться почему Int приходит
-            user.setLogin            ( userLogin   );
-            user.setName             ( userName    );
-            user.setAge              ( userAge     );
-            user.setCity             ( userCity    );
-            user.setFullAddress      ( userAdress  );
-            user.setPhone            ( userPhone   );
-            user.setEmail            ( userEmail   );
-            user.setPhoto            ( userPhoto   );
-            user.setRegdate          ( new Date()  );
-            user.setLastActivity     ( new Date()  );
+            user.setLogin            ( userLogin        );
+            user.setName             ( userName         );
+            user.setBirthdate        ( userBirthdate    );
+            user.setCity             ( userCity         );
+            user.setFullAddress      ( userAdress       );
+            user.setPhone            ( userPhone        );
+            user.setEmail            ( userEmail        );
+            user.setPhoto            ( userPhoto        );
+            user.setRegdate          ( new Date()       );
+            user.setLastActivity     ( new Date()       );
 
             regDAO.add( user, pwdHashWithSalt(userPassword) ); //Todo: а что, если вернулось false?
         }
         return paramsChecking;
     }
 
+    //TODO: вернуть шифрование
     @Override
-    public String pwdHashWithSalt(String password) {
-        return bcryptEncoder.encode(password);
+    public String pwdHashWithSalt(String password)
+    {
+        return password; //bcryptEncoder.encode(password);
     }
 }

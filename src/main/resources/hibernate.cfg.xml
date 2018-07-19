@@ -16,12 +16,10 @@
         <property name="hbm2ddl.auto">create</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.show_sql">false</property>
-        <mapping class="ru.innopolis.stc9.saturn.db.entities.History" />
-        <mapping class="ru.innopolis.stc9.saturn.db.entities.Password" />
-        <mapping class="ru.innopolis.stc9.saturn.db.entities.Role" />
-        <mapping class="ru.innopolis.stc9.saturn.db.entities.User" />
-        <mapping class="ru.innopolis.stc9.saturn.db.entities.UsersListEntity" />
-
-
+        <mapping class="ru.vbugaenko.adminka.db.entities.History" />
+        <mapping class="ru.vbugaenko.adminka.db.entities.Password" />
+        <mapping class="ru.vbugaenko.adminka.db.entities.Role" />
+        <mapping class="ru.vbugaenko.adminka.db.entities.User" />
+        <mapping class="ru.vbugaenko.adminka.db.entities.UsersListEntity" />
     </session-factory>
 </hibernate-configuration>

@@ -1,10 +1,10 @@
-package ru.innopolis.stc9.saturn.service.utility;
+package ru.vbugaenko.adminka.service.utility;
 
-import ru.innopolis.stc9.saturn.service.enums.Roles;
+import ru.vbugaenko.adminka.service.enums.Roles;
 
 public interface RoleFromString
 {
     Roles recognize(String roleStr);
-    int roleInt ( String roleStr );
+    int roleInt(String roleStr);
     Roles def();
 }

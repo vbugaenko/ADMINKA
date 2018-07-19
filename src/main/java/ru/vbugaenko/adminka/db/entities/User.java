@@ -1,6 +1,5 @@
-package ru.innopolis.stc9.saturn.db.entities;
+package ru.vbugaenko.adminka.db.entities;
 
-import ru.innopolis.stc9.saturn.db.dao.RolesDAOImpl;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.time.Instant;
@@ -8,7 +7,6 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -30,11 +28,12 @@ public class User
     private String   login;
     /**
      * User не должен хранить хеш пароля у себя.
+     * только id из таблицы passwords.
      */
     private int      password_id;
-    @ManyToOne
-    private Role     role;
-    private Date     age;   //Todo: birthdayDate;
+    @ManyToOne(optional=false, cascade= CascadeType.ALL, fetch = FetchType.EAGER)
+    private Role role;
+    private Date     birthdate;
     private String   name;
     private String   info;
     private boolean  enabled;
@@ -45,18 +44,14 @@ public class User
     private String   fullAddress;
     private String   photo;
     private Date     lastActivity  = new Date();
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<History> history=new ArrayList();
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
-    private Specific specific;
-
-    public User() { }
 
     public void setId(int id)                       { this.id = id;                     }
     public void setLogin(String login)              { this.login = login;               }
     public void setPassword_id(int password_id)     { this.password_id = password_id;   }
     public void setRole(Role role)                  { this.role = role;                 }
-    public void setAge(Date age)                    { this.age = age;                   }
+    public void setBirthdate(Date birthdate)        { this.birthdate = birthdate;                   }
     public void setName(String name)                { this.name = name;                 }
     public void setInfo(String info)                { this.info = info;                 }
     public void setEnabled(boolean enabled)         { this.enabled = enabled;           }
@@ -68,13 +63,12 @@ public class User
     public void setPhoto(String photo)              { this.photo = photo;               }
     public void setLastActivity(Date lastActivity)  { this.lastActivity = lastActivity; }
     public void setHistory(List<History> history)   { this.history = history;           }
-    public void setSpecific(Specific specific)      { this.specific = specific;         }
 
     public int      getID()               { return this.id;               }
     public String   getLogin()            { return this.login;            }
     public int      getPassword_id()      { return password_id;           }
-    public Role     getRole()             { return this.role;             }
-    public Date     getAge()              { return this.age;              }
+    public Role getRole()             { return this.role;             }
+    public Date     getBirthdate()        { return this.birthdate;        }
     public String   getName()             { return this.name;             }
     public String   getInfo()             { return this.info;             }
     public boolean  getEnabled()          { return this.enabled;          }
@@ -86,24 +80,17 @@ public class User
     public String   getPhoto()            { return photo;                 }
     public Date     getLastActivity()     { return this.lastActivity;     }
     public List<History> getHistory()     { return history;               }
-    public Specific getSpecific()         { return specific;              }
 
     /**
      * Автоматом выводит сколько пользователю полных лет.
      */
     public int getAgeYears()
     {
-        if ((age != null))
-            return Period.between(convertToLocalDate(age), convertToLocalDate(new Date())).getYears();
+        if ((birthdate != null))
+            return Period.between(convertToLocalDate(birthdate), convertToLocalDate(new Date())).getYears();
         else
             return 0;
     }
-
-    public void setRole(String roleName)
-    {
-        this.role = new RolesDAOImpl().getByName(roleName);
-    }
-
 
 /*
     /**
@@ -125,54 +112,6 @@ public class User
                 .toLocalDate();
     }
 
-    public static final Comparator<User> COMPARE_BY_SURNAME_toLESS = new Comparator<User>() {
-        public int compare(User one, User other) {
-            return one.name.compareTo(other.name);
-        }
-    };
-
-    public static final Comparator<User> COMPARE_BY_SURNAME_toUPPER = new Comparator<User>() {
-        public int compare(User one, User other) {
-            return other.name.compareTo(one.name);
-        }
-    };
-
-    public static final Comparator<User> COMPARE_BY_AGE_toLESS = new Comparator<User>() {
-        public int compare(User one, User other) {
-            return one.age.compareTo(other.age);
-        }
-    };
-
-    public static final Comparator<User> COMPARE_BY_AGE_toUPPER = new Comparator<User>() {
-        public int compare(User one, User other) {
-            return other.age.compareTo(one.age);
-        }
-    };
-
-    public static final Comparator<User> COMPARE_BY_ADDRESS_tL = new Comparator<User>() {
-        public int compare(User one, User other) {
-            return one.city.compareTo(other.city);
-        }
-    };
-
-    public static final Comparator<User> COMPARE_BY_ADDRESS_tU = new Comparator<User>() {
-        public int compare(User one, User other) {
-            return other.city.compareTo(one.city);
-        }
-    };
-
-    public static final Comparator<User> COMPARE_BY_RegDATE_tL = new Comparator<User>() {
-        public int compare(User one, User other) {
-            return one.regdate.compareTo(other.regdate);
-        }
-    };
-
-    public static final Comparator<User> COMPARE_BY_RegDATE_tU = new Comparator<User>() {
-        public int compare(User one, User other) {
-            return other.regdate.compareTo(one.regdate);
-        }
-    };
-
     public void addHistory(History h)
     {
         history.add(h);
@@ -190,7 +129,7 @@ public class User
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", role_id=" + role +
-                ", age=" + age +
+                ", age=" + birthdate +
                 ", name='" + name + '\'' +
                 ", info='" + info + '\'' +
                 ", enabled=" + enabled +
@@ -219,6 +158,6 @@ public class User
 
     public void setAge(int i)
     {
-        this.age = new Date(31536000000l*i);
+        this.birthdate = new Date(365*24*60*60*1000*i);
     }
 }

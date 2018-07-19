@@ -1,6 +1,7 @@
-package ru.innopolis.stc9.saturn.db.dao;
+package ru.vbugaenko.adminka.db.dao;
 
-import ru.innopolis.stc9.saturn.db.entities.Role;
+
+import ru.vbugaenko.adminka.db.entities.Role;
 
 /**
  * @author Victor Bugaenko
@@ -9,9 +10,8 @@ import ru.innopolis.stc9.saturn.db.entities.Role;
 
 public interface RolesDAO
 {
-    void check  ();
-    void add    (Role role);
-    Role get    (int id);
+    void add(Role role);
+    Role get(int id);
 
     Role getByName(String roleName);
 }

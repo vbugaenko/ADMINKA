@@ -1,4 +1,4 @@
-package ru.innopolis.stc9.saturn.service.utility;
+package ru.vbugaenko.adminka.service.utility;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;

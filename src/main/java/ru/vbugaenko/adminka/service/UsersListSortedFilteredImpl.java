@@ -1,21 +1,22 @@
-package ru.innopolis.stc9.saturn.service;
+package ru.vbugaenko.adminka.service;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
-import ru.innopolis.stc9.saturn.db.entities.User;
-import ru.innopolis.stc9.saturn.service.enums.Filter;
-import ru.innopolis.stc9.saturn.service.enums.Roles;
-import ru.innopolis.stc9.saturn.service.enums.SortBy;
-import ru.innopolis.stc9.saturn.service.utility.FilterFromStringImpl;
-import ru.innopolis.stc9.saturn.service.utility.RoleFromStringImpl;
+import ru.vbugaenko.adminka.db.entities.User;
+import ru.vbugaenko.adminka.service.enums.Filter;
+import ru.vbugaenko.adminka.service.enums.Roles;
+import ru.vbugaenko.adminka.service.enums.SortBy;
+import ru.vbugaenko.adminka.service.utility.FilterFromStringImpl;
+import ru.vbugaenko.adminka.service.utility.RoleFromStringImpl;
+
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import static ru.innopolis.stc9.saturn.service.enums.Filter.NONE;
-import static ru.innopolis.stc9.saturn.service.enums.Roles.ALL;
-import static ru.innopolis.stc9.saturn.service.enums.SortBy.REGDATE_tL;
+import static ru.vbugaenko.adminka.service.enums.Filter.NONE;
+import static ru.vbugaenko.adminka.service.enums.Roles.ALL;
+import static ru.vbugaenko.adminka.service.enums.SortBy.REGDATE_tL;
+
 
 /**
  * Holder usersList with Meta-Data;
@@ -27,7 +28,7 @@ import static ru.innopolis.stc9.saturn.service.enums.SortBy.REGDATE_tL;
 @Component
 public class UsersListSortedFilteredImpl implements UsersListSortedFiltered
 {
-    final Logger logger = Logger.getLogger(UsersListSortedFilteredImpl.class);
+    private final Logger loggerFileInf = Logger.getLogger("fileinf");
     private List<User> usersList;
     private SortBy sortBy   = REGDATE_tL;
     private Filter filter   = NONE;
@@ -55,6 +56,7 @@ public class UsersListSortedFilteredImpl implements UsersListSortedFiltered
         filtering();
         return usersList;
     }
+
     public SortBy getSortBy()               { return sortBy;    }
     public Filter getFilter()               { return filter;    }
     public Roles  getRole()                 { return role;      }
@@ -70,28 +72,35 @@ public class UsersListSortedFilteredImpl implements UsersListSortedFiltered
                     usersListtmp.add(u);
             }
             catch (Exception e)
-            {
-                logger.error("проблема с формирование списка пользователей при фильтрации");
-            }
+            { loggerFileInf.error( e.getMessage()); }
         this.usersList = usersListtmp;
     }
 
     private void sorting()
     {
-        try {
-            if (sortBy == SortBy.REGDATE_tL) Collections.sort(this.usersList, User.COMPARE_BY_RegDATE_tL);
-            if (sortBy == SortBy.REGDATE_tU) Collections.sort(this.usersList, User.COMPARE_BY_RegDATE_tU);
-            if (sortBy == SortBy.ADDRESS_tL) Collections.sort(this.usersList, User.COMPARE_BY_ADDRESS_tL);
-            if (sortBy == SortBy.ADDRESS_tU) Collections.sort(this.usersList, User.COMPARE_BY_ADDRESS_tU);
-            if (sortBy == SortBy.SURNAME_tL) Collections.sort(this.usersList, User.COMPARE_BY_SURNAME_toLESS);
-            if (sortBy == SortBy.SURNAME_tU) Collections.sort(this.usersList, User.COMPARE_BY_SURNAME_toUPPER);
-            if (sortBy == SortBy.AGE_tL)     Collections.sort(this.usersList, User.COMPARE_BY_AGE_toLESS);
-            if (sortBy == SortBy.AGE_tU)     Collections.sort(this.usersList, User.COMPARE_BY_AGE_toUPPER);
-        }
-        catch (Exception e)
-        {
-            logger.error("проблема с сортировкой пользователей");
-        }
+        if (sortBy == SortBy.REGDATE_tL)
+            usersList.sort((u1, u2) -> u1.getRegdate().compareTo(u2.getRegdate()));
+
+        if (sortBy == SortBy.REGDATE_tU)
+            usersList.sort((u1, u2) -> u2.getRegdate().compareTo(u1.getRegdate()));
+
+        if (sortBy == SortBy.ADDRESS_tL)
+            usersList.sort((u1, u2) -> u1.getFullAddress().compareTo(u2.getFullAddress()));
+
+        if (sortBy == SortBy.ADDRESS_tU)
+            usersList.sort((u1, u2) -> u2.getFullAddress().compareTo(u1.getFullAddress()));
+
+        if (sortBy == SortBy.SURNAME_tL)
+            usersList.sort((u1, u2) -> u1.getName().compareTo(u2.getName()));
+
+        if (sortBy == SortBy.SURNAME_tU)
+            usersList.sort((u1, u2) -> u2.getName().compareTo(u1.getName()));
+
+        if (sortBy == SortBy.AGE_tL)
+            usersList.sort((u1, u2) -> u1.getBirthdate().compareTo(u2.getBirthdate()));
+
+        if (sortBy == SortBy.AGE_tU)
+            usersList.sort((u1, u2) -> u2.getBirthdate().compareTo(u1.getBirthdate()));
     }
 
     public void setUsersList(List<User> usersList)      { this.usersList=usersList; }

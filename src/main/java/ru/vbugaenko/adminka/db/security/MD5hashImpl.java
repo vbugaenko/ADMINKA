@@ -1,4 +1,4 @@
-package ru.innopolis.stc9.saturn.db.security;
+package ru.vbugaenko.adminka.db.security;
 
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
@@ -7,6 +7,7 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
 @Component
 public class MD5hashImpl implements MD5hash {
     private static final  String SALT = "v#X&6$jSl!)(q?>Bv";

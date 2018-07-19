@@ -1,4 +1,4 @@
-package ru.innopolis.stc9.saturn.db.entities;
+package ru.vbugaenko.adminka.db.entities;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 

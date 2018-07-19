@@ -1,4 +1,4 @@
-package ru.innopolis.stc9.saturn.service;
+package ru.vbugaenko.adminka.service;
 
 import java.util.Date;
 
@@ -13,17 +13,17 @@ public interface RegistrationService {
     String pwdHashWithSalt(String password);
 
     String addUser(
-                        Integer userRole,
-                        String userLogin,
-                        String userName,
-                        Date userAge,
-                        String userCity,
-                        String userAdress,
-                        String userPhone,
-                        String userEmail,
-                        String userPassword,
-                        String userPasswordRepeat,
-                        String userPhoto
+            Integer userRole,
+            String userLogin,
+            String userName,
+            Date userAge,
+            String userCity,
+            String userAdress,
+            String userPhone,
+            String userEmail,
+            String userPassword,
+            String userPasswordRepeat,
+            String userPhoto
     );
 
 }

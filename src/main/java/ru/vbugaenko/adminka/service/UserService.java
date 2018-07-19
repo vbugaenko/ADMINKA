@@ -1,4 +1,4 @@
-package ru.innopolis.stc9.saturn.service;
+package ru.vbugaenko.adminka.service;
 
 public interface UserService
 {

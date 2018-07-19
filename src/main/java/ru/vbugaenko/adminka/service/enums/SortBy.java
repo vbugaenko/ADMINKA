@@ -1,4 +1,4 @@
-package ru.innopolis.stc9.saturn.service.enums;
+package ru.vbugaenko.adminka.service.enums;
 
 /**
  * Used by service.UsersListSorteredFiltered class

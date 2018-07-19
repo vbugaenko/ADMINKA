@@ -1,4 +1,4 @@
-package ru.innopolis.stc9.saturn.service.utility;
+package ru.vbugaenko.adminka.service.utility;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

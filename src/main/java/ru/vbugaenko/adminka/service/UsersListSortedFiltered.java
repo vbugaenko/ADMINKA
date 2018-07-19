@@ -1,9 +1,10 @@
-package ru.innopolis.stc9.saturn.service;
+package ru.vbugaenko.adminka.service;
 
-import ru.innopolis.stc9.saturn.db.entities.User;
-import ru.innopolis.stc9.saturn.service.enums.Filter;
-import ru.innopolis.stc9.saturn.service.enums.Roles;
-import ru.innopolis.stc9.saturn.service.enums.SortBy;
+
+import ru.vbugaenko.adminka.db.entities.User;
+import ru.vbugaenko.adminka.service.enums.Filter;
+import ru.vbugaenko.adminka.service.enums.Roles;
+import ru.vbugaenko.adminka.service.enums.SortBy;
 
 import java.util.List;
 

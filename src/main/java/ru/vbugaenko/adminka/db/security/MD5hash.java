@@ -1,5 +1,6 @@
-package ru.innopolis.stc9.saturn.db.security;
+package ru.vbugaenko.adminka.db.security;
 
-public interface MD5hash {
+public interface MD5hash
+{
     public String getHash(String str);
 }

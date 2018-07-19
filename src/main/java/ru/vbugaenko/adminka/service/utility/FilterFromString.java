@@ -1,6 +1,6 @@
-package ru.innopolis.stc9.saturn.service.utility;
+package ru.vbugaenko.adminka.service.utility;
 
-import ru.innopolis.stc9.saturn.service.enums.Filter;
+import ru.vbugaenko.adminka.service.enums.Filter;
 
 public interface FilterFromString
 {

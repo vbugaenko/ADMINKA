@@ -1,19 +1,15 @@
-package ru.innopolis.stc9.saturn.db.dao;
+package ru.vbugaenko.adminka.db.dao;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.query.NativeQuery;
 import org.springframework.stereotype.Repository;
-import ru.innopolis.stc9.saturn.db.entities.Password;
-import ru.innopolis.stc9.saturn.db.entities.Teacher;
-import ru.innopolis.stc9.saturn.db.entities.User;
+import ru.vbugaenko.adminka.db.entities.Password;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  * @author Victor Bugaenko
@@ -65,12 +61,12 @@ public class PasswordDAOImpl implements PasswordDAO
         Password password=null;
         try ( Session session = cfg.buildSessionFactory().openSession() )
         {
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<Password> criteria = builder.createQuery(Password.class);
-        Root<Password> root = criteria.from(Password.class);
-        criteria.select(root).
-                where(builder.equal(root.get("user"), userId));
-        password =  session.createQuery(criteria).uniqueResult();
+            CriteriaBuilder builder = session.getCriteriaBuilder();
+            CriteriaQuery<Password> criteria = builder.createQuery(Password.class);
+            Root<Password> root = criteria.from(Password.class);
+            criteria.select(root).
+                    where(builder.equal(root.get("user"), userId));
+            password =  session.createQuery(criteria).uniqueResult();
             session.close();
         }
         catch (Exception e)

@@ -1,13 +1,14 @@
-package ru.innopolis.stc9.saturn.db.dao;
+package ru.vbugaenko.adminka.db.dao;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.NativeQuery;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import ru.innopolis.stc9.saturn.db.entities.History;
-import ru.innopolis.stc9.saturn.db.entities.Role;
-import ru.innopolis.stc9.saturn.db.entities.User;
+import ru.vbugaenko.adminka.db.entities.History;
+import ru.vbugaenko.adminka.db.entities.Role;
+import ru.vbugaenko.adminka.db.entities.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,9 @@ public class UsersListJpaDaoImpl implements UsersListJpaDao
 
     final Logger loggerFileInf = Logger.getLogger("fileinf");
     final Logger loggerConsoleInf = Logger.getLogger("consoleinf");
+
+    @Autowired
+    RolesDAOImpl rolesDAO;
 
     public List<User> getAllUsers()
     {
@@ -61,9 +65,10 @@ public class UsersListJpaDaoImpl implements UsersListJpaDao
         return getAllUsers();
     }
 
+    //TODO: 2018-07-17 15:06:23 ERROR consoleinf:81 - deleted object would be re-saved by cascade (remove deleted object from associations): [ru.innopolis.stc9.saturn.db.entities.User#3]
     public List<User> delete(int idForD)
     {
-        System.out.println("Удаляем "+idForD);
+        System.out.println(idForD);
         try ( Session session = cfg.buildSessionFactory().openSession() )
         {
             session.beginTransaction();
@@ -99,7 +104,7 @@ public class UsersListJpaDaoImpl implements UsersListJpaDao
 
     public List<User> updateRole(int idForUpd, int newRole)
     {
-        Role role = new RolesDAOImpl().get(newRole);
+        Role role = rolesDAO.get(newRole);
         try ( Session session = cfg.buildSessionFactory().openSession() )
         {
             session.beginTransaction();

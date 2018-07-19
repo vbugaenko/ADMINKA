@@ -1,4 +1,4 @@
-package ru.innopolis.stc9.saturn.controller;
+package ru.vbugaenko.adminka.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,7 +1,8 @@
-package ru.innopolis.stc9.saturn.service.utility;
+package ru.vbugaenko.adminka.service.utility;
 
 import org.springframework.stereotype.Component;
-import ru.innopolis.stc9.saturn.service.enums.SortBy;
+import ru.vbugaenko.adminka.service.enums.SortBy;
+
 
 @Component
 public class SortByFromStringImpl implements SortByFromString

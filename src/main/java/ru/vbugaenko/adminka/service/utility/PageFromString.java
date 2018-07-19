@@ -1,4 +1,4 @@
-package ru.innopolis.stc9.saturn.service.utility;
+package ru.vbugaenko.adminka.service.utility;
 
 public interface PageFromString
 {

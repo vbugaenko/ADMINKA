@@ -1,14 +1,16 @@
-package ru.innopolis.stc9.saturn.db.dao;
+package ru.vbugaenko.adminka.db.dao;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.NativeQuery;
 import org.springframework.stereotype.Repository;
-import ru.innopolis.stc9.saturn.db.entities.Role;
+import ru.vbugaenko.adminka.db.entities.Role;
+
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * @author Victor Bugaenko
@@ -21,11 +23,6 @@ public class RolesDAOImpl implements RolesDAO
     Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
     final Logger loggerFileInf = Logger.getLogger("fileinf");
     final Logger loggerConsoleInf = Logger.getLogger("consoleinf");
-
-    public void check()
-    {
-        System.out.println("RolesDAOImpl загружен");
-    }
 
     @Override
     public void add(Role role)
@@ -47,17 +44,13 @@ public class RolesDAOImpl implements RolesDAO
         Role role = null;
         try ( Session session = cfg.buildSessionFactory().openSession() )
         {
-            System.out.println("Достаем роль");
             session.beginTransaction();
             role = session.get(Role.class, id);
             session.getTransaction().commit();
             session.close();
         }
         catch (Exception e)
-        {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-            loggerConsoleInf.error(e.getMessage()); }
+        { loggerFileInf.error(e.getMessage()); }
         return role;
     }
 

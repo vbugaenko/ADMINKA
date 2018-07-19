@@ -1,9 +1,6 @@
-package ru.innopolis.stc9.saturn.db.entities;
+package ru.vbugaenko.adminka.db.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**

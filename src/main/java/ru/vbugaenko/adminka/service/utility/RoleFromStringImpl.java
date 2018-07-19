@@ -1,9 +1,9 @@
-package ru.innopolis.stc9.saturn.service.utility;
+package ru.vbugaenko.adminka.service.utility;
 
 import org.springframework.stereotype.Component;
-import ru.innopolis.stc9.saturn.service.enums.Roles;
+import ru.vbugaenko.adminka.service.enums.Roles;
 
-import static ru.innopolis.stc9.saturn.service.enums.Roles.*;
+import static ru.vbugaenko.adminka.service.enums.Roles.*;
 
 @Component
 public class RoleFromStringImpl implements RoleFromString

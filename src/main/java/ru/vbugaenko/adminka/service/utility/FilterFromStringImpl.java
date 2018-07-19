@@ -1,9 +1,11 @@
-package ru.innopolis.stc9.saturn.service.utility;
+package ru.vbugaenko.adminka.service.utility;
 
 import org.springframework.stereotype.Component;
-import ru.innopolis.stc9.saturn.service.enums.Filter;
+import ru.vbugaenko.adminka.service.enums.Filter;
 
-import static ru.innopolis.stc9.saturn.service.enums.Filter.*;
+import static ru.vbugaenko.adminka.service.enums.Filter.ACTIVE;
+import static ru.vbugaenko.adminka.service.enums.Filter.DISABLED;
+import static ru.vbugaenko.adminka.service.enums.Filter.NONE;
 
 @Component
 public class FilterFromStringImpl implements FilterFromString
@@ -19,20 +21,20 @@ public class FilterFromStringImpl implements FilterFromString
         if ((str != null)&&(!str.equals("")))
         {
             if (str.equals("N"))
-                return Filter.ACTIVE;
+                return ACTIVE;
 
             if (str.equals("A"))
-                return Filter.DISABLED;
+                return DISABLED;
 
             if (str.equals("D"))
-                return Filter.NONE;
+                return NONE;
         }
         return def();
     }
 
     public Filter def()
     {
-        return Filter.NONE;
+        return NONE;
     }
 
     public boolean compare(boolean b, Filter f)
